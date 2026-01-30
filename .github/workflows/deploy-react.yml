@@ -33,3 +33,8 @@ jobs:
             git checkout main
             git pull origin main
             npm ci
+
+            nohup npm run dev -- --host 0.0.0.0 --port ${DEV_PORT} > dev.log 2>&1 &
+
+            sleep 2
+            sudo fuser -n tcp ${DEV_PORT} || (echo "server not running" && exit 1)
