@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: EC2서버에 접속하기
-        uses: appleboy/ssh-action@v1 
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
@@ -20,7 +20,7 @@ jobs:
             set -e
             set -x
             APP_DIR=/home/ubuntu/vite-react-app
-            REPO_URL="https://github.com/slalom0914/react-docker1.git"
+            REPO_URL="https://github.com/Annie-KMoon/react-docker1.git"
             DEV_PORT=5173
 
             if [ ! -d "$APP_DIR/.git" ]; then
@@ -28,7 +28,7 @@ jobs:
               sudo chown -R $USER:$USER $APP_DIR
               git clone $REPO_URL $APP_DIR
             fi
-            
+
             cd $APP_DIR
             git checkout main
             git pull origin main
